@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ParcelPilot AI Support</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+      <div class="login-card">
+        <div class="logo">
+          <span class="logo-icon">📦</span>
+          <span class="logo-text">ParcelPilot</span>
+          <span class="logo-sub">AI Support</span>
+        </div>
+        <p class="login-desc">Select a user to continue (demo mode)</p>
+        <div id="user-list" class="user-list"></div>
+        <p class="login-note">🔒 Access is scoped to your account and role</p>
+      </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-screen" class="screen">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <span class="logo-icon">📦</span>
+          <div>
+            <div class="sidebar-title">ParcelPilot</div>
+            <div class="sidebar-sub">AI Support</div>
+          </div>
+        </div>
+
+        <div class="user-badge" id="user-badge"></div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-btn active" data-view="chat" onclick="switchView('chat')">
+            <span>💬</span> Chat
+          </button>
+          <button class="nav-btn" data-view="analytics" onclick="switchView('analytics')" id="analytics-nav" style="display:none">
+            <span>📊</span> Issue Detection
+          </button>
+          <button class="nav-btn" data-view="escalations" onclick="switchView('escalations')">
+            <span>🚨</span> Escalations
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="btn-logout" onclick="logout()">← Switch User</button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Chat View -->
+        <div id="view-chat" class="view active">
+          <div class="chat-header">
+            <div>
+              <h1 class="chat-title" id="chat-title">Customer Support</h1>
+              <p class="chat-subtitle" id="chat-subtitle">Ask about your shipments, policies, and account</p>
+            </div>
+            <div class="snapshot-badge" id="snapshot-badge">Loading...</div>
+          </div>
+
+          <div class="chat-messages" id="chat-messages">
+            <div class="welcome-msg" id="welcome-msg">
+              <div class="welcome-icon">🤖</div>
+              <h2 id="welcome-title">Hello! How can I help you today?</h2>
+              <p id="welcome-text">I can answer questions about your shipments, policies, SLAs, cancellations, and service credits.</p>
+              <div class="example-chips" id="example-chips"></div>
+            </div>
+          </div>
+
+          <!-- Confirmation Dialog -->
+          <div id="confirm-dialog" class="confirm-dialog hidden">
+            <div class="confirm-inner">
+              <div class="confirm-icon">⚠️</div>
+              <h3 class="confirm-title">Confirm Action</h3>
+              <p class="confirm-preview" id="confirm-preview"></p>
+              <div class="confirm-btns">
+                <button class="btn-confirm" onclick="confirmAction()">✓ Confirm</button>
+                <button class="btn-cancel-action" onclick="cancelAction()">✕ Cancel</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-input-area">
+            <div class="chat-input-row">
+              <textarea
+                id="chat-input"
+                class="chat-input"
+                placeholder="Ask a question..."
+                rows="1"
+                onkeydown="handleKey(event)"
+                oninput="autoResize(this)"
+              ></textarea>
+              <button class="send-btn" id="send-btn" onclick="sendMessage()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+            <p class="input-note">Sources are cited in every response. Actions require confirmation.</p>
+          </div>
+        </div>
+
+        <!-- Analytics View -->
+        <div id="view-analytics" class="view">
+          <div class="view-header">
+            <h1>Proactive Issue Detection</h1>
+            <button class="btn-refresh" onclick="loadAnalytics()">↻ Refresh</button>
+          </div>
+          <div id="analytics-content" class="analytics-grid"></div>
+        </div>
+
+        <!-- Escalations View -->
+        <div id="view-escalations" class="view">
+          <div class="view-header">
+            <h1>Escalations & Tasks</h1>
+            <button class="btn-refresh" onclick="loadEscalations()">↻ Refresh</button>
+          </div>
+          <div id="escalations-content"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

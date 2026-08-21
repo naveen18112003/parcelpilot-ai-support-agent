@@ -1,0 +1,34 @@
+# ParcelPilot AI Support — Python dependencies
+# Install: pip install -r requirements.txt
+
+# Web framework
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9
+python-dotenv==1.0.1
+
+# LLM provider — Google Gemini
+# Pinned to <3.0.0 to avoid breaking AFC API changes (see sdk changelog)
+google-genai>=1.0.0,<3.0.0
+
+# Document processing
+pypdf==4.2.0
+
+# Embeddings (local, no API cost)
+sentence-transformers==3.0.0
+
+# Vector similarity
+faiss-cpu==1.8.0
+
+# Structured data
+openpyxl==3.1.4
+pandas==2.2.2
+
+# HTTP client (used internally by google-genai)
+httpx==0.27.0
+
+# Numerics
+numpy==1.26.4
+
+# Pydantic (FastAPI dependency)
+pydantic==2.7.3
