@@ -10,3 +10,5 @@ backend/.env
 .vercel
 extracted_docs.json
 extracted_excel.json
+DEMO_VIDEO_PREPARATION_GUIDE.pdf
+*.pdf.tmp
