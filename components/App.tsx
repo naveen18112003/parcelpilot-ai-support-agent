@@ -61,7 +61,9 @@ async function readSse(res: Response, onEvent: (e: Record<string, unknown>) => v
 export default function App() {
   const [users, setUsers] = useState<PublicUser[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
-  const [me, setMe] = useState<PublicUser & { is_internal?: boolean; snapshot?: string } | null>(null);
+  const [me, setMe] = useState<
+    (PublicUser & { is_internal?: boolean; snapshot?: string; llm_active?: boolean; llm_model?: string }) | null
+  >(null);
   const [tab, setTab] = useState<"chat" | "ops">("chat");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
