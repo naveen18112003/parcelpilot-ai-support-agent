@@ -219,7 +219,12 @@ export default function App() {
           <h1>ParcelPilot</h1>
           <p>Answers from the candidate data pack only. Actions stay staged until you confirm.</p>
         </div>
-        <div className="meta-pill">{me.snapshot ?? "dataset snapshot"}</div>
+        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+          <div className="meta-pill" style={{ background: me.llm_active ? "rgba(34,197,94,0.15)" : "rgba(234,179,8,0.15)", color: me.llm_active ? "#4ade80" : "#fde047", border: `1px solid ${me.llm_active ? "rgba(34,197,94,0.3)" : "rgba(234,179,8,0.3)"}` }}>
+            {me.llm_active ? `🤖 LLM: ${me.llm_model ?? "Gemini 2.0 Flash"}` : "⚡ Mode: Deterministic Tools"}
+          </div>
+          <div className="meta-pill">{me.snapshot ?? "dataset snapshot"}</div>
+        </div>
       </header>
       <div className="workspace">
         <aside className="side">
