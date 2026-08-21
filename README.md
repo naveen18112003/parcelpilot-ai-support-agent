@@ -9,10 +9,9 @@
 
 ---
 
-## 🔗 Live Links & Submission Artifacts
+## 🔗 Live Links
 - **🌐 Live Hosted Application:** [https://parcelpilot-ai-support-agent.vercel.app](https://parcelpilot-ai-support-agent.vercel.app)
 - **💻 GitHub Code Repository:** [https://github.com/naveen18112003/parcelpilot-ai-support-agent](https://github.com/naveen18112003/parcelpilot-ai-support-agent)
-- **📋 CalQuity Task Submission Form:** [Task Submission Link](https://forms.gle/hLGBrDrNRmK7UAbv6)
 - **⏱ Reference Snapshot Timestamp:** `2026-08-16 11:00 Asia/Kolkata` (used for all SLA, business-hour, and delay clocks)
 
 ---
@@ -245,7 +244,6 @@ Open `http://localhost:3000` to interact with the application.
 
 ---
 
-### Author & Assessment Submission
+### Author
 - **Author:** Naveen Kumar Yadav
-- **Submission Form:** [https://forms.gle/hLGBrDrNRmK7UAbv6](https://forms.gle/hLGBrDrNRmK7UAbv6)
 - **Status:** Complete, Tested, and Live on Vercel.
