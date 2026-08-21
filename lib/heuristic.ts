@@ -249,6 +249,23 @@ function compose(
     return lines.join("\n");
   }
 
+  // Question 6: Conversational follow-ups (how, what next, help)
+  if (/^how$|^what next$|^what to do$|^next$|^help$/i.test(lower.trim())) {
+    lines.push(`### Recommended Next Steps for ${user.display_name}:`);
+    lines.push("");
+    lines.push("Here are key questions from the assessment you can try right now:");
+    lines.push("1. **Order Cancellation Policy:** *'Can I cancel my latest order without a fee? Explain why.'*");
+    lines.push("2. **Late Pickup Service Credits:** *'A pickup is three hours late because of carrier fault. Should I get a service credit?'*");
+    lines.push("3. **Operational Records:** *'Show my open tickets'* or *'Check status of ORD-1001'*");
+    if (user.role === "customer") {
+      lines.push("4. **Switch Persona:** Click **Switch User** on the sidebar to test internal **Support (Carol)** or **Operations (Dave)** for escalations and the proactive issue detection board!");
+    } else {
+      lines.push("4. **SLA Breach & Escalation:** *'Is TKT-501 approaching or past SLA? Escalate if needed.'*");
+      lines.push("5. **Issue Detection Board:** Switch to the **Issue detection** tab above to view live SLA watches, ticket clusters, and known-issue links.");
+    }
+    return lines.join("\n");
+  }
+
   // Fallback conversational format
   lines.push(`I have reviewed the candidate data pack for **${user.display_name}**.`);
   lines.push("");
